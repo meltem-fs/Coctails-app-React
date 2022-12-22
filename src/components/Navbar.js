@@ -12,11 +12,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+// import logo from "../img/tarik.svg";
+import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+// import theme from "@mui/material/theme";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Home", "About"];
 
-function Navbars() {
+const Navbars = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,10 +39,17 @@ function Navbars() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        color: "secondary",
+        background: "crimson",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon  sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+
           <Typography
             variant="h6"
             noWrap
@@ -51,21 +61,36 @@ function Navbars() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "error",
               textDecoration: "none",
             }}
           >
-            LOGO
+            <img
+              style={{
+                height: "6.5rem",
+                padding: "0.3rem",
+                width: "18rem",
+                borderRadius: "20px",
+              }}
+              src="https://t4.ftcdn.net/jpg/04/18/16/69/360_F_418166911_Vhr4ltpgksXblEd3BJKWcxkT4FhlDiTY.jpg"
+              alt=""
+            />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+              display: { xs: "flex", md: "none" },
+              color: "error",
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="error"
             >
               <MenuIcon />
             </IconButton>
@@ -94,7 +119,7 @@ function Navbars() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -103,60 +128,52 @@ function Navbars() {
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
-              flexGrow: 1,
+              flexGrow: 0,
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "error",
               textDecoration: "none",
             }}
           >
-            LOGO
+            <img
+              style={{
+                height: "5rem",
+                padding: "0.3rem",
+                width: "15rem",
+                borderRadius: "20px",
+              }}
+              src="https://t4.ftcdn.net/jpg/04/18/16/69/360_F_418166911_Vhr4ltpgksXblEd3BJKWcxkT4FhlDiTY.jpg"
+              alt=""
+            />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+          <Grid
+            container
+            direction="row-reverse"
+            justifyContent="flex-start"
+            alignItems="flex-end"
+          >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 3,
+                  color: "white",
+                  display: "inline-block",
+                  mx: 3,
+
+                  // justifyContent: "space-between",
+                }}
               >
                 {page}
               </Button>
             ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          </Grid>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 export default Navbars;

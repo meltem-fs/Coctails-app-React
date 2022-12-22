@@ -1,12 +1,20 @@
-import React from 'react'
-import { useGlobalContext } from '../context'
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 const SearchForm = () => {
-  return (
-    <div>
-      <h2>search form component</h2>
-    </div>
-  )
-}
+ return (
+   <Box
+     sx={{
+       width: 500,
+       maxWidth: "100%",
+       padding:"2rem",
+       margin:"0 auto"
+     }}
+   >
+     <TextField fullWidth label="search coctail" id="fullWidth" color="error"/>
+   </Box>
+ );
+};
 
-export default SearchForm
+export default SearchForm;

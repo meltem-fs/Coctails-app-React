@@ -1,7 +1,9 @@
 import React from 'react'
-import { Route } from 'react-router-dom/cjs/react-router-dom'
-import { BrowserRouter , Routes , Route } from 'react-router-dom'
+import { BrowserRouter , Routes, Route } from 'react-router-dom'
 import Navbars from '../components/Navbar'
+import Home from '../pages/Home'
+import About from '../pages/About'
+import SearchForm from '../components/SearchForm'
 
 const AppRouter = () => {
   return (
@@ -9,7 +11,9 @@ const AppRouter = () => {
       <BrowserRouter>
         <Navbars />
         <Routes>
-          <Route />
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/search" element={<SearchForm/>} />
         </Routes>
       </BrowserRouter>
     </div>
