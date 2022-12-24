@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -10,21 +10,41 @@ import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
 const Cocktail = ({ coctail }) => {
   // console.log(coctail);
 
+  const navigate =  useNavigate()
+
   return (
-    <div>
+    <Grid
+      sx={{
+        display: "flex",
+        flexWrap:"wrap",
+        gap:"3rem",
+        justifyContent: "center",
+        margin:"2rem",
+        borderRadius:"22px"
+      }}
+    >
       {coctail &&
         coctail.map((item) => {
           return (
-            <Grid sx={{
-              display:"flex",
-            }} >
-              <Card sx={{ maxWidth: 400 }}>
+            <Grid>
+              <Card sx={{ width: 300,
+              height:365,
+              display: "flex",
+              flexDirection:"column",
+              justifyContent: "space-between",
+              alignItems: "center",
+              boxShadow: "rgba(0, 0, 0, 0.18) 0px 2px 4px",
+              }}>
                 <CardActionArea>
                   <CardMedia
+                  sx={{
+                    padding:"0.1rem",
+                    borderRadius:"5px"
+                  }}
                     component="img"
-                    height="140"
+                    height="180"
                     image={item.strDrinkThumb}
-                    alt="green iguana"
+                    alt="coctail"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -39,7 +59,7 @@ const Cocktail = ({ coctail }) => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button size="small" color="primary">
+                  <Button onClick={()=> navigate("/detail",item={item})} size="large"  color="primary">
                     Details
                   </Button>
                 </CardActions>
@@ -47,7 +67,7 @@ const Cocktail = ({ coctail }) => {
             </Grid>
           );
         })}
-    </div>
+    </Grid>
   );
 };
 
